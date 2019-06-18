@@ -5,20 +5,20 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private int idade;
-	private char sexo;
+	private char genero;
 	
 	
-	public Cliente(String nome, String cpf, int idade, char sexo) {
+	public Cliente(String nome, String cpf, int idade, char genero) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
-		if(sexo == 'M' || sexo =='F') {
-			this.sexo = sexo;
+		if(genero == 'M' || genero =='F') {
+			this.genero = genero;
 		}
 	}
 
-	public char getSexo() {
-		return sexo;
+	public char getGenero() {
+		return genero;
 	}
 
 	public String getNome() {
@@ -45,6 +45,13 @@ public class Cliente {
 		this.idade = idade;
 	}
 	
+	public String listaCliente() {
+		return "CPF  = " + cpf + " Nome = " + nome;
+	}
+	
+	public String exibeCliente() {
+		return "CPF  = " + cpf + "\nNome = " + nome + "\nIdade = " + idade + "\nGênero = " +genero;
+	}
 	
 	
 	
