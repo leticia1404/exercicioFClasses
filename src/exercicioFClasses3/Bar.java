@@ -27,14 +27,18 @@ public class Bar {
 		this.bar = bar;
 	}
 	
+	//Lista clientes no bar (CPF e nome)
 	public void consultaClientesBar(){
 		Set<String> aux = bar.keySet();
 		for (String s : aux) {
-			System.out.println("CPF: "+bar.get(s).getCpf()+"/nNome: "+bar.get(s).getNome());
+			System.out.println("\nNome: "+bar.get(s).getNome()+"\nCPF: "+bar.get(s).getCpf());
 		}
 		
 	}
 	
+	//Verifica se um cliente com determinado CPF esta no bar,
+	//caso esteja: Exibe o cliente, 
+	//caso não esteja: retorna mensagem "Cliente não está no bar"
 	public String clienteNoBar(String cpf) {
 		if(bar.containsKey(cpf)) {
 			return bar.get(cpf).exibeCliente();
@@ -44,27 +48,40 @@ public class Bar {
 		
 	}
 	
+	//Informa a quantidade de cliente no bar
 	public int quantClientes(){
 		return bar.size();
 	}
 	
-	//terminar
-	public void percentualGenero() {
+	//Informa a distribuição por gênero
+	public String percentualGenero() {
 		Set<String> aux = bar.keySet();
 		char gen;
-		int percF = 0;
-		int percM = 0;
+		int f = 0, m = 0;
+		double percF, percM;
+		
 		for (String s : aux) {
 			gen = bar.get(s).getGenero();
 			if(gen == 'F') {
-				percF++;
+				f++;
 			}else {
-				percM++;
-			}
-	
+				m++;
+			}	
 		}
+		percF = (f*100)/bar.size();
+		percM = (m*100)/bar.size();
 		
+		return "Percentual de clientes do genêro feminino: "+percF
+				+"\nPercentual de clientes do genêro feminino: "+percM;
 		
+	}
+	
+	//Remove um cliente do bar
+	public String saidaBar(String cpf) {
+		if(bar.containsKey(cpf)) {
+			bar.remove(cpf);
+		}
+		return "Saída registrada com sucesso!";
 	}
 	
 	
